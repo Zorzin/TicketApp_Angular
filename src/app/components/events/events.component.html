@@ -1,0 +1,12 @@
+<div class="events-row">
+  <div class="card col-md-3" style="width: 18rem;" *ngFor="let siteEvent of events">
+    <img class="card-img-top" src="" alt="Event img">
+    <div class="card-body">
+      <h5 class="card-title">{{siteEvent.Title}}</h5>
+      <p class="card-text">{{siteEvent.City}}</p>
+      <p class="card-text">{{siteEvent.Time}}</p>
+      <p class="card-text">{{siteEvent.Place}}</p>
+      <a href="#" class="btn btn-primary">{{siteEvent.Description}}</a>
+    </div>
+  </div>
+</div>
