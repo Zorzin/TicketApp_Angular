@@ -1,8 +1,12 @@
-export class SiteEventPreview {
-  Id: number;
-  Title: string;
-  City: string;
-  Time: Date;
-  Place: string;
-  Description: string;
+import {Place} from './place';
+
+export class SiteEvent {
+  id: number;
+  title: string;
+  place: Place;
+  time: Date;
+  shortDetails: string;
+  longDetails: string;
+  ticketPrice: number;
+  ticketsAmount: number;
 }

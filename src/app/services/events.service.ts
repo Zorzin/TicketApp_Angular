@@ -15,6 +15,10 @@ export class EventsService {
     return this.http.get(this.apiService.getEventsUrl(), {headers: this.headers}).toPromise().catch(this.handleError);
   }
 
+  getEvent(id: number) {
+    return this.http.get(this.apiService.getEventUrl() + id, {headers: this.headers}).toPromise().catch(this.handleError);
+  }
+
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);

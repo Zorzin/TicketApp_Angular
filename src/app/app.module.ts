@@ -7,6 +7,7 @@ import { EventsComponent } from './components/events/events.component';
 import { EventDetailsComponent } from './components/event-details/event-details.component';
 import {EventsService} from './services/events.service';
 import {ApiService} from './services/api.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,12 +16,13 @@ import {ApiService} from './services/api.service';
     EventDetailsComponent
   ],
   imports: [
+    HttpClientModule,
     AppRoutingModule,
     BrowserModule
   ],
   providers: [
     EventsService,
-    ApiService
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })

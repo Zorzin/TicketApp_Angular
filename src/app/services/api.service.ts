@@ -5,11 +5,15 @@ import { Injectable } from '@angular/core';
 })
 export class ApiService {
 
-  private apiUrl = "http://localhost:8080";
+  private apiUrl = "https://localhost:44304/api";
 
   constructor() { }
 
   getEventsUrl() {
+    return this.apiUrl + "/events/";
+  }
+
+  getEventUrl() {
     return this.apiUrl + "/events/";
   }
 }

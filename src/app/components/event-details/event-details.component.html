@@ -1,3 +1,11 @@
-<p>
-  event-details works!
-</p>
+<div class="jumbotron">
+  <h1 class="display-4">{{siteEvent.title}}</h1>
+  <p class="lead">{{siteEvent.time}}, {{siteEvent.place.name}} ({{siteEvent.place.city.name}}, {{siteEvent.place.address}})</p>
+  <hr class="my-4">
+  <p>{{siteEvent.longDetails}}</p>
+  <hr class="my-4">
+  <p>Tickets:</p>
+  <p>Amount: {{siteEvent.ticketsAmount}}</p>
+  <p>Actual price: {{siteEvent.ticketPrice}}$</p>
+  <a class="btn btn-primary btn-lg" href="#" role="button">Get ticket</a>
+</div>

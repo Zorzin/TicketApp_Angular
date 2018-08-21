@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventsService} from '../../services/events.service';
-import {SiteEventPreview} from '../../Models/site-event';
+import {SiteEventPreview} from '../../Models/site-event-preview';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -11,7 +12,7 @@ export class EventsComponent implements OnInit {
 
   events : Array<SiteEventPreview> = [];
 
-  constructor(private eventsService : EventsService) { }
+  constructor(private eventsService : EventsService, private router: Router) { }
 
   ngOnInit() {
     this.getEvents();
@@ -23,4 +24,7 @@ export class EventsComponent implements OnInit {
     })
   }
 
+  goToDetails(siteEventId: number) {
+    this.router.navigate(['/event/'+siteEventId]);
+  }
 }
