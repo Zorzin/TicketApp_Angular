@@ -6,6 +6,62 @@
   <hr class="my-4">
   <p>Tickets:</p>
   <p>Amount: {{siteEvent.ticketsAmount}}</p>
+  <p>Amount left: {{siteEvent.ticketsLeft}}</p>
   <p>Actual price: {{siteEvent.ticketPrice}}$</p>
-  <a class="btn btn-primary btn-lg" href="#" role="button">Get ticket</a>
+  <button class="btn btn-primary btn-lg" (click)="showModal(buyTicketModal)" role="button" data-toggle="modal" data-target="#exampleModal">Get ticket</button>
 </div>
+
+<ng-template #buyTicketModal>
+  <div class="modal-header">
+    <h5 class="modal-title" >Book ticket</h5>
+  </div>
+  <div class="modal-body">
+      <div>
+        <label class="col-form-label">First and Last name:</label>
+        <input type="text" class="form-control"[(ngModel)]="ownerName">
+      </div>
+      <div>
+        <label class="col-form-label">Email:</label>
+        <input class="form-control" [(ngModel)]="ownerEmail"/>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="bookTicket()">Book ticket</button>
+  </div>
+</ng-template>
+
+
+<ng-template #ticketCodeModal>
+  <div class="modal-header">
+    <h5 class="modal-title">Book ticket</h5>
+  </div>
+  <div class="modal-body">
+    <div>
+      <label class="col-form-label">Verify code:</label>
+      <input type="text" class="form-control" [(ngModel)]="ticketCode">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="bookTicket()">Book ticket</button>
+  </div>
+</ng-template>
+
+
+<ng-template #confirmModal>
+  <div class="modal-header">
+    <h5 class="modal-title" >Book ticket</h5>
+  </div>
+  <div class="modal-body">
+    <div>
+      <label class="col-form-label">First and Last name:</label>
+      <input type="text" class="form-control"  [(ngModel)]="ownerName">
+    </div>
+    <div>
+      <label class="col-form-label">Email:</label>
+      <input class="form-control" [(ngModel)]="ownerEmail"/>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="bookTicket()">Book ticket</button>
+  </div>
+</ng-template>

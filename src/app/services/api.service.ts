@@ -16,4 +16,16 @@ export class ApiService {
   getEventUrl() {
     return this.apiUrl + "/events/";
   }
+
+  getEventTicketsLeftUrl() {
+    return this.apiUrl + "/events/ticketsleft/";
+  }
+
+  getCreateTicketUrl() {
+    return this.apiUrl + '/tickets/';
+  }
+
+  getConfirmTicketUrl() {
+    return  this.apiUrl + '/tickets/';
+  }
 }

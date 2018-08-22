@@ -9,6 +9,11 @@ import {EventsService} from './services/events.service';
 import {ApiService} from './services/api.service';
 import {HttpClientModule} from '@angular/common/http';
 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import {FormsModule} from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,9 +21,13 @@ import {HttpClientModule} from '@angular/common/http';
     EventDetailsComponent
   ],
   imports: [
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserModule
+    BrowserModule,
+    BsDropdownModule.forRoot(),
+    TooltipModule.forRoot(),
+    ModalModule.forRoot()
   ],
   providers: [
     EventsService,

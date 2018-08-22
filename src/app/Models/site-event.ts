@@ -8,5 +8,6 @@ export class SiteEvent {
   shortDetails: string;
   longDetails: string;
   ticketPrice: number;
+  ticketsLeft: number;
   ticketsAmount: number;
 }
