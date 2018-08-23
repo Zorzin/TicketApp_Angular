@@ -18,8 +18,12 @@ export class EventDetailsComponent implements OnInit {
   @ViewChild('confirmModal')
   private confirmModal: TemplateRef<any>;
 
+  @ViewChild('badCodeModal')
+  private badCodeModal: TemplateRef<any>;
+
   private ticketId : number;
 
+  public dataLoaded: boolean;
   public ticketCode: string;
   public ownerName: string;
   public ownerEmail: string;
@@ -35,12 +39,18 @@ export class EventDetailsComponent implements OnInit {
     private eventService: EventsService) { }
 
   ngOnInit() {
+    this.dataLoaded = false;
+    this.modalService.onHide.subscribe(x=>{
+      this.clearValues();
+    });
+
     this.route.paramMap.subscribe((params: ParamMap) =>
       this.eventService.getEvent(+params.get('id'))
         .then((response : SiteEvent)=>{
         this.siteEvent = response;
         this.eventService.getEventTicketsLeft(+params.get('id')).then((response:number)=>{
           this.siteEvent.ticketsLeft = response;
+          this.dataLoaded = true;
         })
       })
     );
@@ -74,6 +84,8 @@ export class EventDetailsComponent implements OnInit {
         if(response) {
           this.showModal(this.confirmModal);
         }
+      }).catch(x=>{
+        this.showModal(this.badCodeModal);
       })
     }
     else {
@@ -81,4 +93,22 @@ export class EventDetailsComponent implements OnInit {
     }
   }
 
+  private clearValues() {
+    this.ticketCode = null;
+    this.ownerEmail = null;
+    this.ownerName = null;
+    this.bookTicketErrorMessage = false;
+    this.ticketCodeErrorMessage = false;
+  }
+
+  getDateTimeString() {
+    let year = this.siteEvent.time.toString().slice(0,4);
+    let month = this.siteEvent.time.toString().slice(5,7);
+    let day = this.siteEvent.time.toString().slice(8,10);
+
+    let hour = this.siteEvent.time.toString().slice(11,13);
+    let minutes = this.siteEvent.time.toString().slice(14,16);
+
+    return day + "-" + month + "-" + year + " " + hour + ":" + minutes;
+  }
 }

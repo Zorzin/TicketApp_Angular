@@ -1,6 +1,6 @@
-<div class="jumbotron">
+<div *ngIf="dataLoaded" class="jumbotron">
   <h1 class="display-4">{{siteEvent.title}}</h1>
-  <p class="lead">{{siteEvent.time}}, {{siteEvent.place.name}} ({{siteEvent.place.city.name}}, {{siteEvent.place.address}})</p>
+  <p class="lead">{{getDateTimeString()}}, {{siteEvent.place.name}} ({{siteEvent.place.city.name}}, {{siteEvent.place.address}})</p>
   <hr class="my-4">
   <p>{{siteEvent.longDetails}}</p>
   <hr class="my-4">
@@ -8,7 +8,7 @@
   <p>Amount: {{siteEvent.ticketsAmount}}</p>
   <p>Amount left: {{siteEvent.ticketsLeft}}</p>
   <p>Actual price: {{siteEvent.ticketPrice}}$</p>
-  <button class="btn btn-primary btn-lg" (click)="showModal(buyTicketModal)" role="button" data-toggle="modal" data-target="#exampleModal">Get ticket</button>
+  <button *ngIf="siteEvent.ticketsLeft>=1" class="btn btn-primary btn-lg" (click)="showModal(buyTicketModal)" role="button" data-toggle="modal" data-target="#exampleModal">Get ticket</button>
 </div>
 
 <ng-template #buyTicketModal>
@@ -26,6 +26,7 @@
       </div>
   </div>
   <div class="modal-footer">
+    <h5 class="modalErrorMessage" *ngIf="bookTicketErrorMessage">Fill informations</h5>
     <button type="button" class="btn btn-primary" (click)="bookTicket()">Book ticket</button>
   </div>
 </ng-template>
@@ -42,6 +43,7 @@
     </div>
   </div>
   <div class="modal-footer">
+    <h5 class="modalErrorMessage" *ngIf="ticketCodeErrorMessage">Fill code</h5>
     <button type="button" class="btn btn-primary" (click)="verifyCode()">Book ticket</button>
   </div>
 </ng-template>
@@ -53,5 +55,14 @@
   </div>
   <div class="modal-body">
     <h1>Ticket booked!</h1>
+  </div>
+</ng-template>
+
+<ng-template #badCodeModal>
+  <div class="modal-header">
+    <h5 class="modal-title" >Book ticket</h5>
+  </div>
+  <div class="modal-body">
+    <h1>Bad code</h1>
   </div>
 </ng-template>

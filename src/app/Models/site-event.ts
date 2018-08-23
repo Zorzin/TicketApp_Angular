@@ -4,7 +4,7 @@ export class SiteEvent {
   id: number;
   title: string;
   place: Place;
-  time: Date;
+  time: string;
   shortDetails: string;
   longDetails: string;
   ticketPrice: number;
