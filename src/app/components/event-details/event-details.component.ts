@@ -47,6 +47,9 @@ export class EventDetailsComponent implements OnInit {
   }
 
   showModal(template: TemplateRef<any>){
+    if(this.modalRef) {
+      this.modalRef.hide();
+    }
     this.modalRef = this.modalService.show(template);
   }
 
@@ -67,7 +70,8 @@ export class EventDetailsComponent implements OnInit {
     if(this.ticketCode) {
       this.ticketCodeErrorMessage = false;
       this.ticketService.verifyCode(this.ticketCode, this.ticketId).then((response : Response)=>{
-        if(response.ok) {
+        console.log(response);
+        if(response) {
           this.showModal(this.confirmModal);
         }
       })

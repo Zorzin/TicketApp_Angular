@@ -20,7 +20,7 @@ export class TicketService {
 
   private createTicketObject(person: string, email: string, price: number, eventId: number) {
     let ticket = new Ticket();
-    ticket.code = null;
+    ticket.code = "";
     ticket.email = email;
     ticket.owner = person;
     ticket.isConfirmed = false;
@@ -33,6 +33,7 @@ export class TicketService {
     let body = new TicketConfirmation();
     body.ticketCode = ticketCode;
     body.ticketId = ticketId;
+    console.log(body);
     return this.http.post(this.apiService.getConfirmTicketUrl(),body,{headers:this.headers}).toPromise();
   }
 }

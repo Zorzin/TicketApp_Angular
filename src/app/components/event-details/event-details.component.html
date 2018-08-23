@@ -42,7 +42,7 @@
     </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="bookTicket()">Book ticket</button>
+    <button type="button" class="btn btn-primary" (click)="verifyCode()">Book ticket</button>
   </div>
 </ng-template>
 
@@ -52,16 +52,6 @@
     <h5 class="modal-title" >Book ticket</h5>
   </div>
   <div class="modal-body">
-    <div>
-      <label class="col-form-label">First and Last name:</label>
-      <input type="text" class="form-control"  [(ngModel)]="ownerName">
-    </div>
-    <div>
-      <label class="col-form-label">Email:</label>
-      <input class="form-control" [(ngModel)]="ownerEmail"/>
-    </div>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="bookTicket()">Book ticket</button>
+    <h1>Ticket booked!</h1>
   </div>
 </ng-template>

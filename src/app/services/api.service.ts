@@ -26,6 +26,6 @@ export class ApiService {
   }
 
   getConfirmTicketUrl() {
-    return  this.apiUrl + '/tickets/';
+    return  this.apiUrl + '/tickets/verificationCode/';
   }
 }
